@@ -17,7 +17,6 @@ export default function Hero() {
       <div className="grow text-white w-full flex items-center justify-center m-auto">
         <h1 className="text-4xl font-bold">Welcome to <span className="text-yellow-500">Anim</span><span className="text-red-500">Hey</span><span className="text-yellow-500">!</span></h1>
       </div>
-      
     </section>
   );
 }
