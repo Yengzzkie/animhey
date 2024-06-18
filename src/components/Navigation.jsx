@@ -14,16 +14,16 @@ export default function Navigation() {
 
         <ul className="flex items-center">
           <li className="mr-5 hover:text-yellow-300">
-            <Link to="/">Genres</Link>
+            <Link to="/videoplayer">Genres</Link>
           </li>
           <li className="mr-5 hover:text-yellow-300">
-            <Link to="/secondpage">Trending</Link>
+            <Link to="/videoplayer">Trending</Link>
           </li>
           <li className="mr-5 hover:text-yellow-300">
-            <Link to="/secondpage">Popular</Link>
+            <Link to="/videoplayer">Popular</Link>
           </li>
           <li className="mr-5 hover:text-yellow-300">
-            <Link to="/secondpage">Upcoming</Link>
+            <Link to="/videoplayer">Upcoming</Link>
           </li>
           
         </ul>

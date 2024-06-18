@@ -5,12 +5,12 @@ import "./index.css";
 import Root from "./routes/Root";
 import Error from "./routes/Error";
 import Home from "./components/Home";
-import SecondPage from "./components/SecondPage";
+import VideoPlayer from "./components/VideoPlayer";
 
 const router = createBrowserRouter([
   { path: "/", element: <Root />, errorElement: <Error />, children: [
     {path: "/", element: <Home />},
-    {path: "/secondpage", element: <SecondPage />},
+    {path: "/videoplayer", element: <VideoPlayer />},
   ] },
 ]);
 
