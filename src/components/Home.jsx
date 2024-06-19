@@ -13,8 +13,8 @@ export default function Home() {
     
     <section className="container mx-auto mt-8">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-            <RecentlyAdded />
             <MostViewed />
+            <RecentlyAdded />
             <RecentlyCompleted />
 
         </div>

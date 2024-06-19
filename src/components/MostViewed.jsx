@@ -7,7 +7,7 @@ export default function MostViewed() {
   return (
     <div className="flex flex-col h-full col-span-1 pr-4">
       <h1 className="text-xl mb-4">Most Viewed</h1>
-      {popular.slice(0, 7).map((popular, index) => (
+      {popular.slice(0, 10).map((popular, index) => (
         <div
           key={popular.id}
           className="bg-[#252525] hover:bg-[#141414] flex items-center shadow-md h-full w-full mb-1 cursor-pointer"

@@ -51,12 +51,12 @@ const VideoPlayer = () => {
         hls.loadSource(videoUrl);
         hls.attachMedia(videoElement);
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          // Autoplay is disabled, so do not call play here
+
         });
       } else if (videoElement.canPlayType("application/vnd.apple.mpegurl")) {
         videoElement.src = videoUrl;
         videoElement.addEventListener("canplay", () => {
-          // Autoplay is disabled, so do not call play here
+
         });
       }
     }

@@ -7,6 +7,7 @@ import {
   RecentAnimeContext,
   PopularAnimeContext,
   SuggestedAnimeContext,
+  SearchQueryContext
 } from "../utils/context";
 import generateRandomNumber from "../utils/RNG";
 
@@ -16,6 +17,7 @@ export default function Root() {
   const [recent, setRecent] = useState([]);
   const [popular, setPopular] = useState([]);
   const [suggested, setSuggested] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [RNG, setRNG] = useState(null);
 
   useEffect(() => {
@@ -55,22 +57,24 @@ export default function Root() {
         setSuggested
       );
     }
-  }, [RNG]);
+  }, [searchQuery, RNG]);
 
   return (
     <div className="container mx-auto px-4 md:px-2 xl:px-20">
       <Navigation />
-      <SuggestedAnimeContext.Provider value={{ suggested }}>
-        <PopularAnimeContext.Provider value={{ popular }}>
-          <RecentAnimeContext.Provider value={{ recent }}>
-            <TrendingAnimeContext.Provider value={{ trending }}>
-              <main className="flex flex-col items-center w-full mx-auto">
-                <Outlet />
-              </main>
-            </TrendingAnimeContext.Provider>
-          </RecentAnimeContext.Provider>
-        </PopularAnimeContext.Provider>
-      </SuggestedAnimeContext.Provider>
+      <SearchQueryContext.Provider value={{searchQuery, setSearchQuery}}>
+        <SuggestedAnimeContext.Provider value={{ suggested }}>
+          <PopularAnimeContext.Provider value={{ popular }}>
+            <RecentAnimeContext.Provider value={{ recent }}>
+              <TrendingAnimeContext.Provider value={{ trending }}>
+                <main className="flex flex-col items-center w-full mx-auto">
+                  <Outlet />
+                </main>
+              </TrendingAnimeContext.Provider>
+            </RecentAnimeContext.Provider>
+          </PopularAnimeContext.Provider>
+        </SuggestedAnimeContext.Provider>
+      </SearchQueryContext.Provider>
       <Footer />
     </div>
   );
