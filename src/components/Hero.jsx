@@ -40,7 +40,7 @@ export default function Hero() {
         </Link>
       </div>
       <div className="w-full relative">
-        <div className="absolute inset-0 bg-[#141414] opacity-50"></div>
+        <div className="absolute inset-0 bg-[#141414] opacity-20 hover:opacity-0 z-20"></div>
         <GalleryWithCarousel className="" />
       </div>
     </section>

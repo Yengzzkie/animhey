@@ -4,7 +4,7 @@ import { Carousel } from "@material-tailwind/react";
 
 export default function GalleryWithCarousel() {
   return (
-    <Carousel loop={true} autoplay={true} className="items-center">
+    <Carousel prevArrow={false} nextArrow={false} navigation={false} loop={true} autoplay={true} className="items-center">
       <img
         src="https://s4.anilist.co/file/anilistcdn/media/anime/banner/20635-2eB3QP44dM1M.jpg"
         alt="image 1"
