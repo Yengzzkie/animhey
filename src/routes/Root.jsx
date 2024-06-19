@@ -7,9 +7,11 @@ import {
   RecentAnimeContext,
   PopularAnimeContext,
   SuggestedAnimeContext,
-  SearchQueryContext
+  SearchQueryContext,
+  LoadingContext
 } from "../utils/context";
 import generateRandomNumber from "../utils/RNG";
+import { CustomSpinner } from "../components/Spinner";
 
 export default function Root() {
   const [loading, setLoading] = useState(false);
@@ -62,19 +64,21 @@ export default function Root() {
   return (
     <div className="container mx-auto px-4 md:px-2 xl:px-20">
       <Navigation />
-      <SearchQueryContext.Provider value={{searchQuery, setSearchQuery}}>
-        <SuggestedAnimeContext.Provider value={{ suggested }}>
-          <PopularAnimeContext.Provider value={{ popular }}>
-            <RecentAnimeContext.Provider value={{ recent }}>
-              <TrendingAnimeContext.Provider value={{ trending }}>
-                <main className="flex flex-col items-center w-full mx-auto">
-                  <Outlet />
-                </main>
-              </TrendingAnimeContext.Provider>
-            </RecentAnimeContext.Provider>
-          </PopularAnimeContext.Provider>
-        </SuggestedAnimeContext.Provider>
-      </SearchQueryContext.Provider>
+      <LoadingContext.Provider value={{ loading }}>
+        <SearchQueryContext.Provider value={{searchQuery, setSearchQuery}}>
+          <SuggestedAnimeContext.Provider value={{ suggested }}>
+            <PopularAnimeContext.Provider value={{ popular }}>
+              <RecentAnimeContext.Provider value={{ recent }}>
+                <TrendingAnimeContext.Provider value={{ trending }}>
+                  <main className="flex flex-col items-center w-full mx-auto">
+                    <Outlet />
+                  </main>
+                </TrendingAnimeContext.Provider>
+              </RecentAnimeContext.Provider>
+            </PopularAnimeContext.Provider>
+          </SuggestedAnimeContext.Provider>
+        </SearchQueryContext.Provider>
+      </LoadingContext.Provider>
       <Footer />
     </div>
   );

@@ -14,7 +14,7 @@ export default function Trending() {
         {trending.map((trending) => (
           <Link to={`/watch/${trending.id}`}>
             <div key={trending.id} className="relative flex flex-col h-auto w-full">
-              <span className="bg-red-600 absolute top-0 left-0 z-20 px-2 rounded-sm">{trending.status}</span>
+              {trending.status === "Ongoing" ? (<span className="bg-red-600 absolute top-0 left-0 z-20 px-2 rounded-sm">{trending.status}</span>) : (<span className="bg-green-600 absolute top-0 left-0 z-20 px-2 rounded-sm">{trending.status}</span>)}
               <img
                 src={trending.image}
                 alt={trending.title.english}
