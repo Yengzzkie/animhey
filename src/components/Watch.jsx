@@ -13,7 +13,9 @@ import { CustomSpinner } from "./Spinner";
 import { createContext } from "react";
 import Hls from "hls.js";
 import Recommendations from "./Recommendations";
+import Related from "./Related";
 export const RecommendationsContext = createContext();
+export const RelationsContext = createContext();
 
 export default function Watch() {
   const playerRef = useRef(null);
@@ -22,8 +24,10 @@ export default function Watch() {
   const [videoUrl, setVideoUrl] = useState("");
   const [title, setTitle] = useState("");
   const [episodes, setEpisodes] = useState([]);
+  const [genres, setGenres] = useState([]);
   const [currentEpisode, setCurrentEpisode] = useState("");
   const [recommendations, setRecommendations] = useState([]);
+  const [relations, setRelations] = useState([]);
   const { id } = useParams();
 
   const baseURL = "https://consumet-sandy-two.vercel.app/meta/anilist/watch/";
@@ -58,8 +62,11 @@ export default function Watch() {
         const response = await ID.json();
         const episodeID = response.episodes;
         const recommendations = response.recommendations;
+        const relations = response.relations.filter(relations => relations.type !== "MANGA");
         setData(response);
         console.log(response);
+        setGenres(response.genres)
+        setRelations(relations)
         setRecommendations(recommendations);
         setTitle(response.title.english);
         setEpisodes(episodeID.map((episode) => episode.id));
@@ -124,14 +131,21 @@ export default function Watch() {
                 ))}
               </select>
               
-              <h1 className="font-semibold">{title}</h1> 
-              <span>Type: </span> <span className="text-gray-500 italic">{data.type}</span>
-              <p className="text-gray-500">{data.description}</p>
+              <h1 className="text-xl font-semibold">{title}</h1> 
+              <span className="text-gray-500">Type: </span> <span>{data.type}</span> <br />
+              <span className="text-gray-500">Total episodes: </span> <span>{episodes.length}</span> <br />
+              <span className="text-gray-500">Genre: </span> {genres.map((genre, index) => (<span key={index}>{genre}, </span>))} <br />
+              <p className="text-gray-500 text-sm font-semithin mt-2">{data.description}</p>
             </div>
 
-            <RecommendationsContext.Provider value={{ recommendations }}>
-              <Recommendations className="flex-shrink" />
-            </RecommendationsContext.Provider>
+            <RelationsContext.Provider value={{ relations }}>
+              <RecommendationsContext.Provider value={{ recommendations }}>
+                <div className="flex-shrink">
+                  <Related />
+                  <Recommendations />
+                </div>
+              </RecommendationsContext.Provider>
+            </RelationsContext.Provider>
           </div>
         </>
       )}

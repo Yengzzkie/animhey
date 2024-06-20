@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { SearchQueryContext } from "../utils/context";
 import { Link } from "react-router-dom";
 import GalleryWithCarousel from "./Carousel";
+import MostViewed from "./MostViewed"
 
 export default function Hero() {
   const { searchQuery, setSearchQuery } = useContext(SearchQueryContext);

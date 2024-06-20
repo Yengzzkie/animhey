@@ -14,11 +14,11 @@ export default function Navigation() {
       </div>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Link to={"/videoplayer"} className="hover:text-yellow-400 lg:text-lg">Home</Link>
+        <Link to={"/"} className="hover:text-yellow-400 lg:text-lg">Home</Link>
         <Link to={"/"} className="hover:text-yellow-400 lg:text-lg">Genres</Link>
         <Link to={"/"} className="hover:text-yellow-400 lg:text-lg">Trending</Link>
         <Link to={"/"} className="hover:text-yellow-400 lg:text-lg">Popular</Link>
-        <Link to={"/"} className="hover:text-yellow-400 lg:text-lg">Upcoming</Link>
+        <Link to={"/videoplayer"} className="hover:text-yellow-400 lg:text-lg">Upcoming</Link>
       </Navbar.Collapse>
     </Navbar>
   );
