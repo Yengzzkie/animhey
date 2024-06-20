@@ -21,12 +21,12 @@ export default function GalleryWithCarousel() {
           className="h-full w-full object-cover lg:object-contain object-center"
         />
       <img
-        src="https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg"
+        src="https://s4.anilist.co/file/anilistcdn/media/anime/banner/100723-B3tiFsddYmfF.jpg"
         alt="image 2"
         className="h-full w-full object-cover lg:object-contain object-center"
       />
       <img
-        src="https://s4.anilist.co/file/anilistcdn/media/anime/banner/20958-Y7eQdz9VENBD.jpg"
+        src="https://s4.anilist.co/file/anilistcdn/media/anime/banner/n19951-UYgobtqBfn0L.jpg"
         alt="image 3"
         className="h-full w-full object-cover lg:object-contain object-center"
       />

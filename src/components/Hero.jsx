@@ -29,14 +29,14 @@ export default function Hero() {
 
   return (
     <section className="container relative bg-cover bg-center flex flex-col items-center justify-center mb-4 w-full">
-      <div className="shadow-md lg:absolute bottom-full left-1/2 lg:bottom-1/2 lg:-translate-x-1/2 lg:translate-y-1/2 w-full lg:w-3/6 mb-4 z-10">
+      <div className="relative shadow-md lg:absolute bottom-full lg:left-1/2 lg:bottom-0 lg:-translate-x-1/2 lg:translate-y-1/2 w-full lg:w-3/6 mb-4 z-30">
         <input
           type="text"
-          placeholder="Search title"
-          className="bg-[#242424] lg:bg-[#ffffff] text-white lg:text-[#242424] w-full border-none"
+          placeholder="Search anime..."
+          className="bg-[#242424] lg:bg-[#ffffff] text-white text-lg font-semibold lg:text-gray-500 w-full border-none p-4"
         />
-        <Link to={"/"} className="absolute lg:top-1/2 right-0 lg:-translate-y-1/2">
-          <button onClick={handleSearchQuery} className="bg-red-600 hover:bg-red-700 p-2">Search</button>
+        <Link to={"/"} className="absolute top-1/2 right-2 -translate-y-1/2">
+          <button onClick={handleSearchQuery} className="bg-red-600 hover:bg-red-700 rounded-md p-2">Search</button>
         </Link>
       </div>
       <div className="w-full relative">
