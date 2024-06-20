@@ -2,14 +2,13 @@ import { useContext, useEffect } from "react";
 import { SearchQueryContext } from "../utils/context";
 import { Link } from "react-router-dom";
 import GalleryWithCarousel from "./Carousel";
-import MostViewed from "./MostViewed"
 
 export default function Hero() {
   const { searchQuery, setSearchQuery } = useContext(SearchQueryContext);
 
   useEffect(() => {
     const fetchData = async () => {
-      const url = `https://consumet-sandy-two.vercel.app/meta/anilist/info/${id}`;
+      const url = `https://consumet-sandy-two.vercel.app/meta/anilist/${searchQuery}`;
       setLoading(true);
       try {
         const res = await fetch(url);
@@ -26,6 +25,7 @@ export default function Hero() {
 
   function handleSearchQuery(e) {
     setSearchQuery(e.target.value)
+    console.log(searchQuery)
   }
 
   return (
