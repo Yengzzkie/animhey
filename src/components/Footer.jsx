@@ -29,7 +29,7 @@ export default function FooterComponent() {
           </Footer.LinkGroup>
         </div>
         <Footer.Divider />
-        <Footer.Copyright href="#" by="Yengzzkie DzignTech" />
+        <Footer.Copyright by="Designed and Developed by Yengzzkie DzignTech" />
       </div>
     </Footer>
   );
