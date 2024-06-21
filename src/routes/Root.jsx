@@ -11,7 +11,6 @@ import {
   LoadingContext
 } from "../utils/context";
 import generateRandomNumber from "../utils/RNG";
-import { CustomSpinner } from "../components/Spinner";
 
 export default function Root() {
   const [loading, setLoading] = useState(false);
@@ -34,6 +33,7 @@ export default function Root() {
         const res = await fetch(url);
         const resData = await res.json();
         setData(resData.results || []);
+        console.log(recent)
       } catch (err) {
         console.error("Error fetching data:", err);
       } finally {

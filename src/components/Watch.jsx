@@ -25,6 +25,7 @@ export default function Watch() {
   const [title, setTitle] = useState("");
   const [episodes, setEpisodes] = useState([]);
   const [genres, setGenres] = useState([]);
+  const [realeaseDate, setReleaseDate] = useState("");
   const [currentEpisode, setCurrentEpisode] = useState("");
   const [recommendations, setRecommendations] = useState([]);
   const [relations, setRelations] = useState([]);
@@ -65,6 +66,7 @@ export default function Watch() {
         const relations = response.relations.filter(relations => relations.type !== "MANGA");
         setData(response);
         console.log(response);
+        setReleaseDate(response.startDate)
         setGenres(response.genres)
         setRelations(relations)
         setRecommendations(recommendations);
@@ -134,6 +136,7 @@ export default function Watch() {
               <h1 className="text-xl font-semibold">{title}</h1> 
               <span className="text-gray-500">Type: </span> <span>{data.type}</span> <br />
               <span className="text-gray-500">Total episodes: </span> <span>{episodes.length}</span> <br />
+              <span className="text-gray-500">Original release date: </span> <span>{realeaseDate.year}-{realeaseDate.month}-{realeaseDate.day}</span> <br />
               <span className="text-gray-500">Genre: </span> {genres.map((genre, index) => (<span key={index}>{genre}, </span>))} <br />
               <p className="text-gray-500 text-sm font-semithin mt-2">{data.description}</p>
             </div>
