@@ -6,7 +6,7 @@ export default function MostViewed() {
   const { popular } = useContext(PopularAnimeContext);
 
   return (
-    <div className="flex flex-col h-full col-span-1 pr-4">
+    <div className="flex flex-col h-full col-span-1 lg:pr-4">
       <h1 className="text-xl mb-4">Most Viewed</h1>
       {popular.slice(0, 10).map((popular, index) => (
         <Link to={`/watch/${popular.id}`} key={popular.id}>

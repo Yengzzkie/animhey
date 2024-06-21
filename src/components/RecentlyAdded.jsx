@@ -6,7 +6,7 @@ export default function RecentlyAdded() {
   const { recent } = useContext(RecentAnimeContext);
 
   return (
-    <div className="flex flex-col h-full col-span-1 pr-4">
+    <div className="flex flex-col h-full col-span-1 lg:pr-4">
       <h1 className="text-xl mb-4">Recently Added</h1>
       {recent.slice(0, 10).map((recent) => (
         <Link to={`/watch/${recent.id}`} key={recent.id}>

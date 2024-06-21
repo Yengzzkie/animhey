@@ -62,7 +62,7 @@ export default function Root() {
   }, [searchQuery, RNG]);
 
   return (
-    <div className="container mx-auto px-4 md:px-2 xl:px-20">
+    <div className="px-2 mx-auto xl:px-20">
       <Navigation />
       <LoadingContext.Provider value={{ loading }}>
         <SearchQueryContext.Provider value={{searchQuery, setSearchQuery}}>
