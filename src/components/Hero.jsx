@@ -36,7 +36,7 @@ export default function Hero() {
           placeholder="Search anime..."
           className="bg-[#242424] lg:bg-[#ffffff] text-white text-lg font-semibold lg:text-gray-500 w-full border-none p-4"
         />
-        <Link to={"/"} className="absolute top-1/2 right-2 -translate-y-1/2">
+        <Link to={"/videoplayer"} className="absolute top-1/2 right-2 -translate-y-1/2">
           <button onClick={handleSearchQuery} className="bg-red-600 hover:bg-red-700 rounded-md p-2">Search</button>
         </Link>
       </div>
