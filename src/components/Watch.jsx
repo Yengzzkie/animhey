@@ -54,33 +54,35 @@ export default function Watch() {
   }, [currentEpisode]);
 
   useEffect(() => {
-    async function fetchID() {
+    function fetchID() {
       setLoading(true);
-      try {
-        const ID = await fetch(
-          `https://consumet-sandy-two.vercel.app/meta/anilist/info/${id}`
-        );
-        const response = await ID.json();
-        const episodeID = response.episodes;
-        const recommendations = response.recommendations;
-        const relations = response.relations.filter(relations => relations.type !== "MANGA");
-        setData(response);
-        console.log(response);
-        setReleaseDate(response.startDate)
-        setGenres(response.genres)
-        setRelations(relations)
-        setRecommendations(recommendations);
-        setTitle(response.title.english);
-        setEpisodes(episodeID.map((episode) => episode.id));
-        setCurrentEpisode(episodeID[0].id);
-      } catch (err) {
-        console.error("Error fetching ID:", err);
-      } finally {
-        setLoading(false);
-      }
+      fetch(`https://consumet-sandy-two.vercel.app/meta/anilist/info/${id}`)
+        .then((ID) => ID.json())
+        .then((response) => {
+          const episodeID = response.episodes;
+          const recommendations = response.recommendations;
+          const relations = response.relations.filter((relation) => relation.type !== "MANGA");
+          setData(response);
+          console.log(response);
+          setReleaseDate(response.startDate);
+          setGenres(response.genres);
+          setRelations(relations);
+          setRecommendations(recommendations);
+          setTitle(response.title.english);
+          setEpisodes(episodeID.map((episode) => episode.id));
+          setCurrentEpisode(episodeID[0].id);
+        })
+        .catch((err) => {
+          console.error("Error fetching ID:", err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
+  
     fetchID();
   }, [id]);
+  
 
   useEffect(() => {
     if (videoUrl && playerRef.current) {

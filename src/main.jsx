@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import VideoPlayer from "./components/VideoPlayer";
 import AnimeResult from "./components/AnimeResult";
 import Watch from "./components/Watch";
+import OnePiece from "./components/OnePiece";
 
 const router = createBrowserRouter([
   { path: "/", element: <Root />, errorElement: <Error />, children: [
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     {path: "/results", element: <AnimeResult />},
     {path: "/videoplayer", element: <VideoPlayer />},
     {path: "/watch/:id", element: <Watch />},
+    {path: "/watch/onepiece", element: <OnePiece />},
   ] },
 ]);
 
