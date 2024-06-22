@@ -9,7 +9,7 @@ import { CustomSpinner } from "./Spinner";
 
 export default function Home() {
   const { loading } = useContext(LoadingContext);
-  const { clicks } = useContext(ClicksContext)
+  const { clicks } = useContext(ClicksContext);
 
   return (
     <>
@@ -18,6 +18,7 @@ export default function Home() {
       ) : (
         <>
           <Hero />
+          <p className="text-gray-400 mt-2">Page visits: <span className="font-semibold">{clicks}</span></p>
           <Trending />
           <section className="container mx-auto mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">

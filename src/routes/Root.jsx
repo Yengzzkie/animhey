@@ -9,7 +9,7 @@ import {
   SuggestedAnimeContext,
   SearchQueryContext,
   LoadingContext,
-  ClicksContext
+  ClicksContext,
 } from "../utils/context";
 import generateRandomNumber from "../utils/RNG";
 
@@ -19,7 +19,7 @@ export default function Root() {
   const [recent, setRecent] = useState([]);
   const [popular, setPopular] = useState([]);
   const [suggested, setSuggested] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [RNG, setRNG] = useState(null);
   const [clicks, setClicks] = useState(null);
 
@@ -64,31 +64,31 @@ export default function Root() {
 
   useEffect(() => {
     const fetchVisits = () => {
-      fetch('https://animhey-backend.onrender.com/api/visits')
-          .then(response => {
-              if (!response.ok) {
-                  throw new Error('Network response was not ok ' + response.statusText);
-              }
-              return response.json();
-          })
-          .then(data => {
-              console.log('Visit count:', data.count);
-          })
-          .catch(error => {
-              console.error('There was a problem with the fetch operation:', error);
-          });
-  };
-  
-  fetchVisits();
-  
+      fetch("https://animhey-backend.onrender.com/api/visits")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(
+              "Network response was not ok " + response.statusText
+            );
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setClicks(data.count);
+        })
+        .catch((error) => {
+          console.error("There was a problem with the fetch operation:", error);
+        });
+    };
 
-  }, [])
+    fetchVisits();
+  }, []);
 
   return (
     <div className="px-2 mx-auto xl:px-20">
       <Navigation />
       <LoadingContext.Provider value={{ loading }}>
-        <SearchQueryContext.Provider value={{searchQuery, setSearchQuery}}>
+        <SearchQueryContext.Provider value={{ searchQuery, setSearchQuery }}>
           <SuggestedAnimeContext.Provider value={{ suggested }}>
             <PopularAnimeContext.Provider value={{ popular }}>
               <RecentAnimeContext.Provider value={{ recent }}>
