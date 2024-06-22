@@ -21,7 +21,7 @@ export default function Root() {
   const [suggested, setSuggested] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [RNG, setRNG] = useState(null);
-  const [clicks, setClicks] = useState('1');
+  const [clicks, setClicks] = useState(null);
 
   useEffect(() => {
     const randomNumber = generateRandomNumber();
@@ -35,7 +35,6 @@ export default function Root() {
         const res = await fetch(url);
         const resData = await res.json();
         setData(resData.results || []);
-        console.log(recent)
       } catch (err) {
         console.error("Error fetching data:", err);
       } finally {
@@ -60,7 +59,6 @@ export default function Root() {
         `https://consumet-sandy-two.vercel.app/meta/anilist/advanced-search?page=${RNG}`,
         setSuggested
       );
-      fetchData(`https://animhey-backend-dxyrno310-yengzzkies-projects.vercel.app/`, setClicks)
     }
   }, [searchQuery, RNG]);
 

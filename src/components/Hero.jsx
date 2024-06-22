@@ -9,16 +9,13 @@ export default function Hero() {
   useEffect(() => {
     const fetchData = async () => {
       const url = `https://consumet-sandy-two.vercel.app/meta/anilist/${searchQuery}`;
-      setLoading(true);
       try {
         const res = await fetch(url);
         const resData = await res.json();
         setData(resData.results || []);
       } catch (err) {
         console.error("Error fetching data:", err);
-      } finally {
-        setLoading(false);
-      }
+      } 
     }
     fetchData();
   }, [searchQuery])
