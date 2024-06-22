@@ -64,7 +64,7 @@ export default function Root() {
 
   useEffect(() => {
     const fetchVisits = () => {
-      fetch('/api/visits')
+      fetch('https://animhey-backend.onrender.com/api/visits')
           .then(response => {
               if (!response.ok) {
                   throw new Error('Network response was not ok ' + response.statusText);
