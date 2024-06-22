@@ -62,6 +62,28 @@ export default function Root() {
     }
   }, [searchQuery, RNG]);
 
+  useEffect(() => {
+    const fetchVisits = () => {
+      fetch('/api/visits')
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok ' + response.statusText);
+              }
+              return response.json();
+          })
+          .then(data => {
+              console.log('Visit count:', data.count);
+          })
+          .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+          });
+  };
+  
+  fetchVisits();
+  
+
+  }, [])
+
   return (
     <div className="px-2 mx-auto xl:px-20">
       <Navigation />
