@@ -8,7 +8,8 @@ import {
   PopularAnimeContext,
   SuggestedAnimeContext,
   SearchQueryContext,
-  LoadingContext
+  LoadingContext,
+  ClicksContext
 } from "../utils/context";
 import generateRandomNumber from "../utils/RNG";
 
@@ -20,6 +21,7 @@ export default function Root() {
   const [suggested, setSuggested] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [RNG, setRNG] = useState(null);
+  const [clicks, setClicks] = useState('1');
 
   useEffect(() => {
     const randomNumber = generateRandomNumber();
@@ -58,6 +60,7 @@ export default function Root() {
         `https://consumet-sandy-two.vercel.app/meta/anilist/advanced-search?page=${RNG}`,
         setSuggested
       );
+      fetchData(`https://animhey-backend-dxyrno310-yengzzkies-projects.vercel.app/`, setClicks)
     }
   }, [searchQuery, RNG]);
 
@@ -70,9 +73,11 @@ export default function Root() {
             <PopularAnimeContext.Provider value={{ popular }}>
               <RecentAnimeContext.Provider value={{ recent }}>
                 <TrendingAnimeContext.Provider value={{ trending }}>
-                  <main className="flex flex-col items-center w-full mx-auto">
-                    <Outlet />
-                  </main>
+                  <ClicksContext.Provider value={{ clicks }}>
+                    <main className="flex flex-col items-center w-full mx-auto">
+                      <Outlet />
+                    </main>
+                  </ClicksContext.Provider>
                 </TrendingAnimeContext.Provider>
               </RecentAnimeContext.Provider>
             </PopularAnimeContext.Provider>
