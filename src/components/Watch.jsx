@@ -7,6 +7,7 @@ import {
   VolumeMenuButton,
   BigPlayButton,
 } from "video-react";
+import 'video-react/dist/video-react.css';
 import { useRef, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CustomSpinner } from "./Spinner";
