@@ -10,6 +10,7 @@ import {
   SearchQueryContext,
   LoadingContext,
   ClicksContext,
+  SearchResultContext
 } from "../utils/context";
 import generateRandomNumber from "../utils/RNG";
 
@@ -21,6 +22,7 @@ export default function Root() {
   const [suggested, setSuggested] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [RNG, setRNG] = useState(null);
+  const [searchResult, setSearchResult] = useState([]);
   const [clicks, setClicks] = useState(null);
 
   useEffect(() => {
@@ -60,7 +62,7 @@ export default function Root() {
         setSuggested
       );
     }
-  }, [searchQuery, RNG]);
+  }, [RNG]);
 
   useEffect(() => {
     const fetchVisits = () => {
@@ -94,9 +96,11 @@ export default function Root() {
               <RecentAnimeContext.Provider value={{ recent }}>
                 <TrendingAnimeContext.Provider value={{ trending }}>
                   <ClicksContext.Provider value={{ clicks }}>
-                    <main className="flex flex-col items-center w-full mx-auto">
-                      <Outlet />
-                    </main>
+                    <SearchResultContext.Provider value={{ searchResult, setSearchResult }}>
+                      <main className="flex flex-col items-center w-full mx-auto">
+                        <Outlet />
+                      </main>
+                    </SearchResultContext.Provider>
                   </ClicksContext.Provider>
                 </TrendingAnimeContext.Provider>
               </RecentAnimeContext.Provider>

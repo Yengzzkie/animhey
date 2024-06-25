@@ -14,3 +14,11 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #161616;
 }
+
+.card {
+  box-shadow: -7px 7px 2px #141414;
+}
+
+.status-badge {
+  box-shadow: 0px 2px 2px #141414;
+}

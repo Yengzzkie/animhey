@@ -15,7 +15,7 @@ export default function Trending() {
           // setting a special route for one piece due to fetching error of its ID ("21") from API
           <Link key={trending.id} to={trending.id === "21" ? "/watch/onepiece" : `/watch/${trending.id}`}>
             <div key={trending.id} className="relative flex flex-col h-auto w-full">
-              {trending.status === "Ongoing" ? (<span className="bg-red-600 absolute top-0 left-0 z-20 px-2 rounded-sm">{trending.status}</span>) : (<span className="bg-green-600 absolute top-0 left-0 z-20 px-2 rounded-sm">{trending.status}</span>)}
+              {trending.status === "Ongoing" ? (<span className="bg-red-600 status-badge absolute top-0 left-0 z-20 px-2">{trending.status}</span>) : (<span className="bg-green-600 status-badge absolute top-0 left-0 z-20 px-2">{trending.status}</span>)}
               <img
                 src={trending.image}
                 alt={trending.title.english}
