@@ -28,6 +28,7 @@ export default function Watch() {
   const [genres, setGenres] = useState([]);
   const [realeaseDate, setReleaseDate] = useState("");
   const [currentEpisode, setCurrentEpisode] = useState("");
+  const [episodeLength, setEpisodeLength] = useState("");
   const [recommendations, setRecommendations] = useState([]);
   const [relations, setRelations] = useState([]);
   const { id } = useParams();
@@ -41,7 +42,7 @@ export default function Watch() {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        setVideoUrl(data.sources[3].url);
+        setVideoUrl("https://www119.vipanicdn.net/streamhls/4784de0ca2635bff65762ff31949e3e8/ep.1.1709561451.1080.m3u8");
       } catch (err) {
         console.error("Error fetching video URL:", err);
       } finally {
@@ -60,11 +61,13 @@ export default function Watch() {
       fetch(`https://consumet-sandy-two.vercel.app/meta/anilist/info/${id}`)
         .then((ID) => ID.json())
         .then((response) => {
+          console.log(response)
           const episodeID = response.episodes;
           const recommendations = response.recommendations;
           const relations = response.relations.filter((relation) => relation.type !== "MANGA");
           setData(response);
-          console.log(response);
+          console.log(response.currentEpisode);
+          setEpisodeLength(response.currentEpisode);
           setReleaseDate(response.startDate);
           setGenres(response.genres);
           setRelations(relations);
@@ -138,7 +141,7 @@ export default function Watch() {
               
               <h1 className="text-xl font-semibold">{title}</h1> 
               <span className="text-gray-500">Type: </span> <span>{data.type}</span> <br />
-              <span className="text-gray-500">Total episodes: </span> <span>{episodes.length}</span> <br />
+              <span className="text-gray-500">Total episodes: </span> <span>{episodeLength}</span> <br />
               <span className="text-gray-500">Original release date: </span> <span>{realeaseDate.year}-{realeaseDate.month}-{realeaseDate.day}</span> <br />
               <span className="text-gray-500">Genre: </span> {genres.map((genre, index) => (<span key={index}>{genre}, </span>))} <br />
               <p className="text-gray-500 text-sm font-semithin mt-2">{data.description}</p>

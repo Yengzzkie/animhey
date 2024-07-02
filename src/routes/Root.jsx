@@ -37,6 +37,7 @@ export default function Root() {
         const res = await fetch(url);
         const resData = await res.json();
         setData(resData.results || []);
+        console.log(popular)
       } catch (err) {
         console.error("Error fetching data:", err);
       } finally {

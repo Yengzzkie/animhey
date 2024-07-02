@@ -13,13 +13,13 @@ export default function Trending() {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8 w-full h-full">
         {trending.map((trending) => (
           // setting a special route for one piece due to fetching error of its ID ("21") from API
-          <Link key={trending.id} to={trending.id === "21" ? "/watch/onepiece" : `/watch/${trending.id}`}>
+          <Link key={trending.id} to={trending.id === "21" ? "/watch/onepiece" : `/watch/${trending.id}/${trending.title.romaji}`}>
             <div key={trending.id} className="relative flex flex-col h-auto w-full">
-              {trending.status === "Ongoing" ? (<span className="bg-red-600 status-badge absolute top-0 left-0 z-20 px-2">{trending.status}</span>) : (<span className="bg-green-600 status-badge absolute top-0 left-0 z-20 px-2">{trending.status}</span>)}
+              {trending.status === "Ongoing" ? (<span className="bg-red-600 status-badge absolute top-0 left-0 z-20 px-2 rounded-tl-md">{trending.status}</span>) : (<span className="bg-green-600 status-badge absolute top-0 left-0 z-20 px-2 rounded-tl-md">{trending.status}</span>)}
               <img
                 src={trending.image}
                 alt={trending.title.english}
-                className="flex-grow object-cover shadow-sm hover:scale-105 transition-transform cursor-pointer"
+                className="flex-grow object-cover shadow-sm hover:scale-105 max-h-56 transition-transform cursor-pointer rounded-md"
               />
               <h2 className="mt-2 text-[#c3c3c3] text-md font-bold truncate">
                 {trending.title.english}

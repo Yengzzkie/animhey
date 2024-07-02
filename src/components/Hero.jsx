@@ -10,12 +10,12 @@ export default function Hero() {
 
   useEffect(() => {
     async function fetchData() {
-      const url = `https://consumet-sandy-two.vercel.app/meta/anilist/${searchQuery}`;
+      const url = `https://consumet-sandy-two.vercel.app/anime/gogoanime/${searchQuery}`;
       try {
         const res = await fetch(url);
         const resData = await res.json();
-        console.log(resData.results);
-        setSearchResult(resData.results);
+        setSearchResult(resData.results.filter(result => result.subOrDub === "sub"));
+        console.log(resData.results.filter(result => result.subOrDub === "sub"));
       } catch (err) {
         console.error("Error fetching data:", err);
       }

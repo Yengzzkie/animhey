@@ -7,7 +7,7 @@ import Error from "./routes/Error";
 import Home from "./components/Home";
 import VideoPlayer from "./components/VideoPlayer";
 import AnimeResult from "./components/AnimeResult";
-import Watch from "./components/Watch";
+import WatchVideo from "./components/WatchVideo";
 import OnePiece from "./components/OnePiece";
 
 const router = createBrowserRouter([
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     {path: "/", element: <Home />},
     {path: "/results", element: <AnimeResult />},
     {path: "/videoplayer", element: <VideoPlayer />},
-    {path: "/watch/:id", element: <Watch />},
+    {path: "/watch/:id/:animetitle", element: <WatchVideo />},
     {path: "/watch/onepiece", element: <OnePiece />},
   ] },
 ]);
