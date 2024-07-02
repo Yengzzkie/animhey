@@ -11,12 +11,8 @@ import {
   import { useRef, useState, useEffect } from "react";
   import { useParams } from "react-router-dom";
   import { CustomSpinner } from "./Spinner";
-  import { createContext } from "react";
   import Hls from "hls.js";
   import axios from "axios";
-  
-  export const RecommendationsContext = createContext();
-  export const RelationsContext = createContext();
   
   export default function WatchVideo() {
     const playerRef = useRef(null);

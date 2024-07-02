@@ -22,3 +22,11 @@
 .status-badge {
   box-shadow: 0px 2px 2px #141414;
 }
+
+.top-image {
+  box-shadow: 5px 5px 2px #141414;
+}
+
+.text-shadow {
+  text-shadow: 3px 3px 2px #141414;
+}
