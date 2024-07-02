@@ -37,7 +37,7 @@ export default function Root() {
         const res = await fetch(url);
         const resData = await res.json();
         setData(resData.results || []);
-        console.log(popular)
+        console.log(recent)
       } catch (err) {
         console.error("Error fetching data:", err);
       } finally {
@@ -51,7 +51,7 @@ export default function Root() {
         setTrending
       );
       fetchData(
-        "https://consumet-sandy-two.vercel.app/meta/anilist/recent-episodes",
+        "https://consumet-sandy-two.vercel.app/anime/gogoanime/recent-episodes",
         setRecent
       );
       fetchData(
