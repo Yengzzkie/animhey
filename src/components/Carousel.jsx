@@ -11,8 +11,6 @@ export default function GalleryWithCarousel() {
 
   return (
     <Carousel
-      prevArrow={false}
-      nextArrow={false}
       navigation={false}
       loop={true}
       autoplay={true}

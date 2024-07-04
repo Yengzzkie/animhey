@@ -40,7 +40,6 @@ import {
           if (filteredResults.length > 0) {
             const animeID = filteredResults[0].id;
             const animeInfoResponse = await axios.get(`https://consumet-sandy-two.vercel.app/anime/gogoanime/info/${animeID}`);
-            console.log(animeInfoResponse)
 
             const episodeIDs = animeInfoResponse.data.episodes.map(episode => episode.id);
             setEpisodes(episodeIDs);
@@ -142,7 +141,7 @@ import {
                 <h1 className="text-xl font-semibold">{title}</h1>
                 <span className="text-gray-500">Type: </span> <span>{animeType}</span> <br />
                 <span className="text-gray-500">Total episodes: </span> <span>{episodeLength}</span> <br />
-                <span className="text-gray-500">Original release date: </span> <span>{releaseDate.year}-{releaseDate.month}-{releaseDate.day}</span> <br />
+                <span className="text-gray-500">Original release date: </span> <span>{releaseDate}</span> <br />
                 <span className="text-gray-500">Genre: </span> {genres.map((genre, index) => (<span key={index}>{genre}, </span>))} <br />
                 <p className="text-gray-500 text-sm font-semithin mt-2">{description}</p>
               </div>

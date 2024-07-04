@@ -7,7 +7,10 @@ export default function MostViewed() {
 
   return (
     <div className="flex flex-col h-full col-span-1 lg:pr-4">
-      <h1 className="text-xl mb-4">Most Viewed</h1>
+      <div className="flex items-center mb-4">
+        <h1 className="text-xl">Most Viewed</h1>
+        <button className="hover:text-red-500 ml-auto mr-2">View all</button>
+      </div>
       {popular.slice(0, 10).map((popular, index) => (
         <Link to={`/watch/${popular.id}/${popular.title.romaji}`} key={popular.id}>
           <div className="bg-[#252525] hover:bg-[#141414] flex items-center shadow-md h-20 w-full mb-1 cursor-pointer">
