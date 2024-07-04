@@ -1,12 +1,12 @@
-import Hero from "./Hero";
-import Trending from "./Trending";
-import RecentlyAdded from "./RecentlyAdded";
-import MostViewed from "./MostViewed";
-import RecentlyCompleted from "./RecentlyCompleted";
+import Hero from "../components/Hero";
+import Trending from "../components/Trending";
+import RecentlyAdded from "../components/RecentlyAdded";
+import MostViewed from "../components/MostViewed";
+import RecentlyCompleted from "../components/RecentlyCompleted";
 import { ClicksContext, LoadingContext } from "../utils/context";
 import { useContext } from "react";
-import { CustomSpinner } from "./Spinner";
-import { Modal } from "./Dialog";
+import { CustomSpinner } from "../components/Spinner";
+import { Modal } from "../components/Dialog";
 
 export default function Home() {
   const { loading } = useContext(LoadingContext);

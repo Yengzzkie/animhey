@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { SearchResultContext } from "../utils/context";
 import { Link } from "react-router-dom";
 import { Card } from "flowbite-react";
-import { CustomSpinner } from "./Spinner";
+import { CustomSpinner } from "../components/Spinner";
 
 export default function AnimeResult() {
   const { searchResult } = useContext(SearchResultContext);

@@ -4,17 +4,15 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/Root";
 import Error from "./routes/Error";
-import Home from "./components/Home";
-import VideoPlayer from "./components/VideoPlayer";
-import AnimeResult from "./components/AnimeResult";
-import WatchVideo from "./components/WatchVideo";
+import Home from "./routes/Home";
+import AnimeResult from "./routes/AnimeResult";
+import WatchVideo from "./routes/WatchVideo";
 import OnePiece from "./components/OnePiece";
 
 const router = createBrowserRouter([
   { path: "/", element: <Root />, errorElement: <Error />, children: [
     {path: "/", element: <Home />},
     {path: "/results", element: <AnimeResult />},
-    {path: "/videoplayer", element: <VideoPlayer />},
     {path: "/watch/:id/:animetitle", element: <WatchVideo />},
     {path: "/watch/onepiece", element: <OnePiece />},
   ] },

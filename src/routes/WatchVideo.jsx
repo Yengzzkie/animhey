@@ -10,7 +10,7 @@ import {
   import 'video-react/dist/video-react.css';
   import { useRef, useState, useEffect } from "react";
   import { useParams } from "react-router-dom";
-  import { CustomSpinner } from "./Spinner";
+  import { CustomSpinner } from "../components/Spinner";
   import Hls from "hls.js";
   import axios from "axios";
   
@@ -22,6 +22,7 @@ import {
     const [videoUrl, setVideoUrl] = useState("");
     const [title, setTitle] = useState("");
     const [genres, setGenres] = useState([]);
+    const [image, setImage] = useState("");
     const [description, setDescription] = useState("");
     const [animeType, setAnimeType] = useState("");
     const [releaseDate, setReleaseDate] = useState("");
@@ -40,11 +41,12 @@ import {
           if (filteredResults.length > 0) {
             const animeID = filteredResults[0].id;
             const animeInfoResponse = await axios.get(`https://consumet-sandy-two.vercel.app/anime/gogoanime/info/${animeID}`);
-
+            // console.log(animeInfoResponse)
             const episodeIDs = animeInfoResponse.data.episodes.map(episode => episode.id);
             setEpisodes(episodeIDs);
             setCurrentEpisode(episodeIDs[0]);
             setTitle(animeInfoResponse.data.title);
+            setImage(animeInfoResponse.image)
             setDescription(animeInfoResponse.data.description)
             setAnimeType(animeInfoResponse.data.type)
             setGenres(animeInfoResponse.data.genres);
@@ -113,7 +115,7 @@ import {
             <div className="flex flex-col lg:flex-row gap-6">
             <div className="flex flex-col lg:flex-row gap-6 w-full">
               <div className="flex-grow flex-shrink-0" style={{ flexBasis: '60%' }}>
-                <Player poster={data.image} ref={playerRef} fluid className="w-full">
+                <Player poster={image} ref={playerRef} fluid className="w-full">
                   <source src={videoUrl} />
                   <BigPlayButton position="center" />
                   <ControlBar>
