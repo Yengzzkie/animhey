@@ -18,19 +18,18 @@ export function Modal() {
 
   return (
     <>
-      <Dialog open={open} handler={handleOpen} className="bg-[#141414] ">
+      <Dialog open={open} handler={handleOpen} className="bg-[#141414]">
         <DialogHeader className="text-white">Hello fellow anime lovers!</DialogHeader>
         <DialogBody className="text-white">
           <p>
-            Search function is now available to make finding your favorite anime
-            easier. More features are coming soon!
+            Page navigation is now available. You can jump through pages to browse
+            available anime in the Trending section.
           </p>
           <br />
           <p>
-              Got suggestions? Send an email to <a href="mailto:gatchalian.manuel@gmail.com">
-                 <span className="font-semibold">gatchalian.manuel@gmail.com</span>
-              </a>
-              . Enjoy!
+            Got suggestions? Send an email to <a href="mailto:gatchalian.manuel@gmail.com">
+              <span className="font-semibold">gatchalian.manuel@gmail.com</span>
+            </a>. Enjoy!
           </p>
           <br />
           <p className="text-right">- Yengzzkie DzignTech</p>

@@ -10,12 +10,15 @@ import {
   SearchQueryContext,
   LoadingContext,
   ClicksContext,
-  SearchResultContext
+  SearchResultContext,
+  CurrentPageContext,
+  ComponentLoadingContext
 } from "../utils/context";
 import generateRandomNumber from "../utils/RNG";
 
 export default function Root() {
   const [loading, setLoading] = useState(false);
+  const [componentLoading, setComponentLoading] = useState(false);
   const [trending, setTrending] = useState([]);
   const [recent, setRecent] = useState([]);
   const [popular, setPopular] = useState([]);
@@ -24,6 +27,7 @@ export default function Root() {
   const [RNG, setRNG] = useState(null);
   const [searchResult, setSearchResult] = useState([]);
   const [clicks, setClicks] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const randomNumber = generateRandomNumber();
@@ -36,6 +40,7 @@ export default function Root() {
       try {
         const res = await fetch(url);
         const resData = await res.json();
+        console.log(resData)
         setData(resData.results || []);
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -46,7 +51,7 @@ export default function Root() {
 
     if (RNG !== null) {
       fetchData(
-        "https://consumet-sandy-two.vercel.app/meta/anilist/trending?page=1&perPage=18",
+        `https://consumet-sandy-two.vercel.app/meta/anilist/trending?page=${currentPage}&perPage=18`,
         setTrending
       );
       fetchData(
@@ -61,8 +66,30 @@ export default function Root() {
         `https://consumet-sandy-two.vercel.app/meta/anilist/advanced-search?page=${RNG}`,
         setSuggested
       );
+      console.log(trending)
     }
   }, [RNG]);
+
+  useEffect(() => {
+    const fetchTrending = async (url, setData) => {
+      setComponentLoading(true);
+      try {
+        const res = await fetch(url);
+        const resData = await res.json();
+        console.log(resData)
+        setData(resData.results || []);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      } finally {
+        setComponentLoading(false);
+      }
+    };
+
+    fetchTrending(
+      `https://consumet-sandy-two.vercel.app/meta/anilist/trending?page=${currentPage}&perPage=18`,
+        setTrending
+    )
+  }, [currentPage])
 
   useEffect(() => {
     const fetchVisits = () => {
@@ -97,9 +124,13 @@ export default function Root() {
                 <TrendingAnimeContext.Provider value={{ trending }}>
                   <ClicksContext.Provider value={{ clicks }}>
                     <SearchResultContext.Provider value={{ searchResult, setSearchResult }}>
-                      <main className="flex flex-col items-center w-full mx-auto">
-                        <Outlet />
-                      </main>
+                      <CurrentPageContext.Provider value={{ currentPage, setCurrentPage }}>
+                        <ComponentLoadingContext.Provider value={{ componentLoading, setComponentLoading }}>
+                          <main className="flex flex-col items-center w-full mx-auto">
+                            <Outlet />
+                          </main>
+                        </ComponentLoadingContext.Provider>
+                      </CurrentPageContext.Provider>
                     </SearchResultContext.Provider>
                   </ClicksContext.Provider>
                 </TrendingAnimeContext.Provider>
