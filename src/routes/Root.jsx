@@ -40,7 +40,7 @@ export default function Root() {
       try {
         const res = await fetch(url);
         const resData = await res.json();
-        console.log(resData)
+        // console.log(resData)
         setData(resData.results || []);
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -66,7 +66,7 @@ export default function Root() {
         `https://consumet-sandy-two.vercel.app/meta/anilist/advanced-search?page=${RNG}`,
         setSuggested
       );
-      console.log(trending)
+      // console.log(trending)
     }
   }, [RNG]);
 
@@ -76,7 +76,7 @@ export default function Root() {
       try {
         const res = await fetch(url);
         const resData = await res.json();
-        console.log(resData)
+        // console.log(resData)
         setData(resData.results || []);
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -116,7 +116,7 @@ export default function Root() {
   return (
     <div className="px-2 mx-auto xl:px-20">
       <Navigation />
-      <LoadingContext.Provider value={{ loading }}>
+      <LoadingContext.Provider value={{ loading, setLoading }}>
         <SearchQueryContext.Provider value={{ searchQuery, setSearchQuery }}>
           <SuggestedAnimeContext.Provider value={{ suggested }}>
             <PopularAnimeContext.Provider value={{ popular }}>

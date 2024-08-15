@@ -1,11 +1,12 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
-import { SearchQueryContext, SearchResultContext } from "../utils/context";
+import { LoadingContext, SearchQueryContext, SearchResultContext } from "../utils/context";
 import GalleryWithCarousel from "./Carousel";
 
 export default function Hero() {
   const { searchQuery, setSearchQuery } = useContext(SearchQueryContext);
   const { setSearchResult } = useContext(SearchResultContext);
+  const { setLoading } = useContext(LoadingContext);
   const navigate = useNavigate(); 
 
   useEffect(() => {
@@ -15,9 +16,10 @@ export default function Hero() {
         const res = await fetch(url);
         const resData = await res.json();
         setSearchResult(resData.results.filter(result => result.subOrDub === "sub"));
-        console.log(resData.results.filter(result => result.subOrDub === "sub"));
       } catch (err) {
         console.error("Error fetching data:", err);
+      } finally {
+        setLoading(false)
       }
     }
     
