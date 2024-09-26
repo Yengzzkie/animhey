@@ -42,6 +42,7 @@ export default function Watch() {
       try {
         const response = await fetch(url);
         const data = await response.json();
+        console.log(data)
         setVideoUrl("https://www119.vipanicdn.net/streamhls/4784de0ca2635bff65762ff31949e3e8/ep.1.1709561451.1080.m3u8");
       } catch (err) {
         console.error("Error fetching video URL:", err);
