@@ -2,12 +2,12 @@
 
 import { Carousel } from "@material-tailwind/react";
 import { useContext } from "react";
-import { PopularAnimeContext } from "../utils/context";
+import { TrendingAnimeContext } from "../utils/context";
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 
 export default function GalleryWithCarousel() {
-  const { popular } = useContext(PopularAnimeContext);
+  const { trending } = useContext(TrendingAnimeContext);
 
   return (
     <Carousel
@@ -16,9 +16,9 @@ export default function GalleryWithCarousel() {
       autoplay={true}
       className="items-center h-full w-full"
     >
-      {popular.slice(0, 10).map((anime, index) => (
+      {trending.slice(0, 10).map((anime, index) => (
         
-          <div className="relative bg-[#252525a8] hover:bg-[#141414] items-center shadow-md h-full w-full mb-1 cursor-pointer">
+          <div key={trending.id} className="relative bg-[#252525a8] hover:bg-[#141414] items-center shadow-md h-full w-full mb-1 cursor-pointer">
             <img
               src={anime.cover}
               alt={anime.title}
@@ -30,8 +30,9 @@ export default function GalleryWithCarousel() {
                 <img src={anime.image} className="w-28 lg:w-32 rounded-md top-image" />
                 <div className="flex flex-col gap-2">
                   <h1 className="text-md lg:text-xl text-shadow">{anime.title.english}</h1>
+                  <h2 className="italic font-light text-shadow">&quot;{anime.title.romaji}&quot;</h2>
                   <span className="bg-orange-400 text-white rounded-md w-fit px-2 status-badge">#{index + 1} in Top Viewed</span>
-                  <Link to={`/watch/${anime.id}/${anime.title.romaji}`} key={anime.id}>
+                  <Link to={`/watch/${anime.id}/${anime.title.english}`} key={anime.id}>
                     <Button className="hover:bg-red-600" variant="gradient" size="sm">Watch Now</Button>
                   </Link>
                 </div>

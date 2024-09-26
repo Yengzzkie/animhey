@@ -29,7 +29,7 @@ export default function Trending() {
                 to={
                   trending.id === "21"
                     ? "/watch/onepiece"
-                    : `/watch/${trending.id}/${trending.title.native}`
+                    : `/watch/${trending.id}/${trending.title.english}`
                 }
               >
                 <div
@@ -53,8 +53,8 @@ export default function Trending() {
                   <h2 className="mt-2 text-[#c3c3c3] text-md font-bold truncate">
                     {trending.title.english}
                   </h2>
-                  <p className="mt-1 text-gray-600 truncate">
-                    {trending.description}
+                  <p className="italic mt-1 text-gray-600 truncate">
+                    {trending.title.romaji}
                   </p>
                 </div>
               </Link>

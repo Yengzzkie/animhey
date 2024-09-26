@@ -6,7 +6,7 @@ import RecentlyCompleted from "../components/RecentlyCompleted";
 import { ClicksContext, LoadingContext } from "../utils/context";
 import { useContext } from "react";
 import { CustomSpinner } from "../components/Spinner";
-import { InfoBanner } from "../components/Banner";
+// import { InfoBanner } from "../components/Banner";
 // import { Modal } from "../components/Dialog";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         <CustomSpinner />
       ) : (
         <>
-          <InfoBanner />
+          {/* <InfoBanner /> */}
           <Hero />
           <p className="text-gray-400 mt-2">Page visits: <span className="font-semibold">{clicks}</span></p>
           {/* <Modal /> */}
