@@ -7,7 +7,7 @@ import { ClicksContext, LoadingContext } from "../utils/context";
 import { useContext } from "react";
 import { CustomSpinner } from "../components/Spinner";
 // import { InfoBanner } from "../components/Banner";
-// import { Modal } from "../components/Dialog";
+import { Modal } from "../components/Dialog";
 
 export default function Home() {
   const { loading } = useContext(LoadingContext);
@@ -22,7 +22,7 @@ export default function Home() {
           {/* <InfoBanner /> */}
           <Hero />
           <p className="text-gray-400 mt-2">Page visits: <span className="font-semibold">{clicks === null ? <CustomSpinner /> : clicks}</span></p>
-          {/* <Modal /> */}
+          <Modal />
 
           <Trending />
           <section className="container mx-auto mt-8">

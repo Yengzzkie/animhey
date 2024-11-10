@@ -19,17 +19,18 @@ export function Modal() {
   return (
     <>
       <Dialog open={open} handler={handleOpen} className="bg-[#141414]">
-        <DialogHeader className="text-white">Hello fellow anime lovers!</DialogHeader>
+        <DialogHeader className="text-white">
+          Hello fellow anime lovers!
+        </DialogHeader>
         <DialogBody className="text-white">
           <p>
-            Page navigation is now available. You can jump through pages to browse
-            available anime in the Trending section.
+            We are currently experiencing server issues causing anime titles to
+            not load properly. The issue is being addressed.
           </p>
           <br />
           <p>
-            Got suggestions? Send an email to <a href="mailto:gatchalian.manuel@gmail.com">
-              <span className="font-semibold">gatchalian.manuel@gmail.com</span>
-            </a>. Enjoy!
+            In the meantime, please try searching for your favorite anime title
+            manually using the search bar.
           </p>
           <br />
           <p className="text-right">- Yengzzkie DzignTech</p>
