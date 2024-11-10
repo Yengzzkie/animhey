@@ -30,3 +30,11 @@
 .text-shadow {
   text-shadow: 3px 3px 2px #141414;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}

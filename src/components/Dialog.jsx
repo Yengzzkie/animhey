@@ -33,6 +33,15 @@ export function Modal() {
             manually using the search bar.
           </p>
           <br />
+          <p className="text-green-400 italic">
+            Public chatroom is also added, to utilize it you have to enter your
+            desired display name. This display name is tied to your device. If you
+            decide to access <span className="font-bold text-yellow-400">Anim</span><span className="font-bold text-red-500">Hey!</span> from another device, you will be asked again
+            to enter your display name.
+          </p>
+          <br />
+          <p className="font-bold">Check it out at the bottom of the page!</p>
+          <br />
           <p className="text-right">- Yengzzkie DzignTech</p>
         </DialogBody>
         <DialogFooter>

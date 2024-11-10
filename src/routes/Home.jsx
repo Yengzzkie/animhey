@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { CustomSpinner } from "../components/Spinner";
 // import { InfoBanner } from "../components/Banner";
 import { Modal } from "../components/Dialog";
+import Chat from "../components/Chat";
 
 export default function Home() {
   const { loading } = useContext(LoadingContext);
@@ -31,6 +32,7 @@ export default function Home() {
               <RecentlyAdded />
               <RecentlyCompleted />
             </div>
+            <Chat />
           </section>
         </>
       )}
